@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('exam_students', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('exam_id');
+            $table->unsignedBigInteger('student_id');
+            $table->text('memorized');
+            $table->float('degree');
+            $table->text('note')->nullable();
+            $table->date('date');
             $table->timestamps();
+
+
+            $table->foreign('exam_id')->references('id')->on('exams');
+            
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 
