@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->id();
-            $table->id();
-            $table->id();
+            $table->unsignedBigInteger("student_id");
+            $table->double("payed");
+            $table->int("month");
+            $table->text("onte")->nullable();
             $table->timestamps();
+
+
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 
