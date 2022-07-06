@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->date('brithday');
+            $table->string('phone');
+            $table->enum('type', ['normal', 'dense']);
+            $table->text('note');
+            $table->integer('attend_id');
             $table->timestamps();
+
+            $table->foreign('attend_id')
+                ->references('id')
+                ->on('attends')
+                ->onDelete('CASCADE');
         });
     }
 

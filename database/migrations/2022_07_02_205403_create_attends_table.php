@@ -15,7 +15,23 @@ return new class extends Migration
     {
         Schema::create('attends', function (Blueprint $table) {
             $table->id();
+            $table->integer('student_id');
+            $table->integer('lesson_id');
+            $table->date('date');
+            $table->boolean('attend');
+            $table->text('note');
             $table->timestamps();
+
+
+            $table->foreign('student_id')
+                ->references('id')
+                ->on('students')
+                ->onDelete('CASCADE');
+
+            $table->foreign('lesson_id')
+                ->references('id')
+                ->on('lessons')
+                ->onDelete('CASCADE');
         });
     }
 
