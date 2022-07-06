@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('brithday');
             $table->string('phone');
             $table->enum('type', ['normal', 'dense']);
-            $table->text('note');
-            $table->integer('attend_id');
+            $table->text('note')->nullable();
+            $table->unsignedBigInteger('attend_id');
             $table->timestamps();
 
             $table->foreign('attend_id')

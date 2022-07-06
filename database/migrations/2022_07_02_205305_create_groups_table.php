@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('type',['kids','mid','mom'])->nullable();
+            $table->enum('type', ['kids', 'mid', 'mom'])->nullable();
             $table->unsignedBigInteger('teacher_id');
             $table->text('note')->nullable();
             $table->timestamps();

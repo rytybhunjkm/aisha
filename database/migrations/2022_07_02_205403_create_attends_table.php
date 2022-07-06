@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('attends', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
-            $table->integer('lesson_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('lesson_id');
             $table->date('date');
             $table->boolean('attend');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
 
 
