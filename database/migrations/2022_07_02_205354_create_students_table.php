@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string('phone');
             $table->enum('type', ['normal', 'dense']);
             $table->text('note')->nullable();
-            $table->unsignedBigInteger('attend_id');
+            $table->unsignedBigInteger('group_id');
             $table->timestamps();
 
-            $table->foreign('attend_id')
+            $table->foreign('group_id')
                 ->references('id')
-                ->on('attends')
+                ->on('groups')
                 ->onDelete('CASCADE');
         });
     }
