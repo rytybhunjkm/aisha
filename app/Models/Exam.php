@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Exam extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'teacher',
+        'title',
+        'max_mark',
+        'min_mark',
+        'note'
+    ];
 }
