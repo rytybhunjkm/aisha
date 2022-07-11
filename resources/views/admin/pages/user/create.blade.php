@@ -30,7 +30,7 @@
                             <div class="col col-md-12">
                                 <div class="input-group">
                                     <div class="input-group-addon">البريد الالكتروني</div>
-                                    <input type="email" id="birthday" name="email" class="form-control">
+                                    <input type="email" id="email" name="email" class="form-control">
                                 </div>
                                 @error('email')
                                     <p class="text-danger">{{ $message }}</p>
@@ -44,7 +44,19 @@
                             <div class="col col-md-12">
                                 <div class="input-group">
                                     <div class="input-group-addon">كلمه السر</div>
-                                    <input type="password" id="phone" name="password" class="form-control">
+                                    <input type="password" id="password" name="password" class="form-control">
+                                </div>
+                                @error('password')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">اعد كتابه كلمه السر</div>
+                                    <input type="password" id="password" name="password_confirm" class="form-control">
                                 </div>
                                 @error('password')
                                     <p class="text-danger">{{ $message }}</p>

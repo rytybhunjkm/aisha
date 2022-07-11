@@ -24,9 +24,14 @@ class UserController extends Controller
     {
         $request->validate([
 
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => [
+                'required',
+                'min:6',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
+            ],
+            'password_confirm' => 'required|same:password'
         ]);
 
         User::create([
