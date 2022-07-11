@@ -58,7 +58,7 @@
                                     <div class="input-group-addon">اعد كتابه كلمه السر</div>
                                     <input type="password" id="password" name="password_confirm" class="form-control">
                                 </div>
-                                @error('password')
+                                @error('password_confirm')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

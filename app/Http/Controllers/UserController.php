@@ -28,8 +28,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => [
                 'required',
-                'min:6',
-                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
+                'min:3'
             ],
             'password_confirm' => 'required|same:password'
         ]);
