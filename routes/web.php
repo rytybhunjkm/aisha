@@ -52,43 +52,43 @@ Route::delete('/ExamStudents/destroy', [ExamStudentsController::class, 'destroy'
 
 
 Route::get('/attend', [AttendController::class, 'index'])->name('AttendController.index');
-Route::get('/attend/create', [AttendController::class, 'create'])->name('AttendController.create');
-Route::post('/attend/store', [AttendController::class, 'store'])->name('AttendController.store');
-Route::get('/attend/edit/{id}', [AttendController::class, 'edit'])->name('AttendController.edit');
-Route::put('/attend/update', [AttendController::class, 'update'])->name('AttendController.update');
-Route::delete('/attend/delete', [AttendController::class, 'delete'])->name('AttendController.delete');
+Route::get('/attend/create', [AttendController::class, 'create'])->name('Attend.create');
+Route::post('/attend/store', [AttendController::class, 'store'])->name('Attend.store');
+Route::get('/attend/edit/{id}', [AttendController::class, 'edit'])->name('Attend.edit');
+Route::put('/attend/update', [AttendController::class, 'update'])->name('Attend.update');
+Route::delete('/attend/delete', [AttendController::class, 'delete'])->name('Attend.delete');
 
-Route::get('/exam', [ExamController::class, 'index'])->name('ExamController.index');
-Route::get('/exam/create', [ExamController::class, 'create'])->name('ExamController.create');
-Route::post('/exam/store', [ExamController::class, 'store'])->name('ExamController.store');
-Route::get('/exam/edit/{id}', [ExamController::class, 'edit'])->name('ExamController.edit');
-Route::put('/exam/update', [ExamController::class, 'update'])->name('ExamController.update');
-Route::delete('/exam/delete', [ExamController::class, 'delete'])->name('ExamController.delete');
+Route::get('/exam', [ExamController::class, 'index'])->name('Exam.index');
+Route::get('/exam/create', [ExamController::class, 'create'])->name('Exam.create');
+Route::post('/exam/store', [ExamController::class, 'store'])->name('Exam.store');
+Route::get('/exam/edit/{id}', [ExamController::class, 'edit'])->name('Exam.edit');
+Route::put('/exam/update', [ExamController::class, 'update'])->name('Exam.update');
+Route::delete('/exam/delete', [ExamController::class, 'delete'])->name('Exam.delete');
 
-Route::get('/group', [GroupController::class, 'index'])->name('GroupController.index');
-Route::get('/group/create', [GroupController::class, 'create'])->name('GroupController.create');
-Route::post('/group/store', [GroupController::class, 'store'])->name('GroupController.store');
-Route::get('/group/edit/{id}', [GroupController::class, 'edit'])->name('GroupController.edit');
-Route::put('/group/update', [GroupController::class, 'update'])->name('GroupController.update');
-Route::delete('/group/delete', [GroupController::class, 'delete'])->name('GroupController.delete');
+Route::get('/group', [GroupController::class, 'index'])->name('Group.index');
+Route::get('/group/create', [GroupController::class, 'create'])->name('Group.create');
+Route::post('/group/store', [GroupController::class, 'store'])->name('Group.store');
+Route::get('/group/edit/{id}', [GroupController::class, 'edit'])->name('Group.edit');
+Route::put('/group/update', [GroupController::class, 'update'])->name('Group.update');
+Route::delete('/group/delete', [GroupController::class, 'delete'])->name('Group.delete');
 
-Route::get('/lesson', [LessonController::class, 'index'])->name('LessonController.index');
-Route::get('/lesson/create', [LessonController::class, 'create'])->name('LessonController.create');
-Route::post('/lesson/store', [LessonController::class, 'store'])->name('LessonController.store');
-Route::get('/lesson/edit/{id}', [LessonController::class, 'edit'])->name('LessonController.edit');
-Route::put('/lesson/update', [LessonController::class, 'update'])->name('LessonController.update');
-Route::delete('/lesson/delete', [LessonController::class, 'delete'])->name('LessonController.delete');
+Route::get('/lesson', [LessonController::class, 'index'])->name('Lesson.index');
+Route::get('/lesson/create', [LessonController::class, 'create'])->name('Lesson.create');
+Route::post('/lesson/store', [LessonController::class, 'store'])->name('Lesson.store');
+Route::get('/lesson/edit/{id}', [LessonController::class, 'edit'])->name('Lesson.edit');
+Route::put('/lesson/update', [LessonController::class, 'update'])->name('Lesson.update');
+Route::delete('/lesson/delete', [LessonController::class, 'delete'])->name('Lesson.delete');
 
-Route::get('/student', [StudentController::class, 'index'])->name('StudentController.index');
-Route::get('/student/create', [StudentController::class, 'create'])->name('StudentController.create');
-Route::post('/student/store', [StudentController::class, 'store'])->name('StudentController.store');
-Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('StudentController.edit');
-Route::put('/student/update', [StudentController::class, 'update'])->name('StudentController.update');
-Route::delete('/student/delete', [StudentController::class, 'delete'])->name('StudentController.delete');
+Route::get('/student', [StudentController::class, 'index'])->name('Student.index');
+Route::get('/student/create', [StudentController::class, 'create'])->name('Student.create');
+Route::post('/student/store', [StudentController::class, 'store'])->name('Student.store');
+Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('Student.edit');
+Route::put('/student/update', [StudentController::class, 'update'])->name('Student.update');
+Route::delete('/student/delete', [StudentController::class, 'delete'])->name('Student.delete');
 
-Route::get('/user', [UserController::class, 'index'])->name('UserController.index');
-Route::get('/user/create', [UserController::class, 'create'])->name('UserController.create');
-Route::post('/user/store', [UserController::class, 'store'])->name('UserController.store');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('UserController.edit');
-Route::put('/user/update', [UserController::class, 'update'])->name('UserController.update');
-Route::delete('/user/delete', [UserController::class, 'delete'])->name('UserController.delete');
+Route::get('/user', [UserController::class, 'index'])->name('User.index');
+Route::get('/user/create', [UserController::class, 'create'])->name('User.create');
+Route::post('/user/store', [UserController::class, 'store'])->name('User.store');
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('User.edit');
+Route::put('/user/update', [UserController::class, 'update'])->name('User.update');
+Route::delete('/user/delete', [UserController::class, 'delete'])->name('User.delete');
