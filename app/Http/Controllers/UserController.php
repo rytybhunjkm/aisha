@@ -38,7 +38,8 @@ class UserController extends Controller
 
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'password_confirm' => $request->password_confirm
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
         return redirect()->back();
