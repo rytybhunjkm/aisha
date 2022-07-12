@@ -3,7 +3,7 @@
         <label>{{ $label }}</label>
         <div class="input-group">
             <textarea class="form-control" name="{{ $name }}" id="{{ $name }}" cols="30" rows="10">
-                      {{ old($name) }}
+                      {{ $value }}
                 </textarea>
         </div>
         @error($name)

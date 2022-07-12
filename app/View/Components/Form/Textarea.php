@@ -10,12 +10,13 @@ class Textarae extends Component
     public $id;
     public $name;
     public $label;
+    public $value;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $label, $id = null)
+    public function __construct($name, $label, $value, $id = null)
     {
 
         if (is_null($id)) {
@@ -26,6 +27,7 @@ class Textarae extends Component
         }
         $this->name = $name;
         $this->label = $label;
+        $this->value = $value;
     }
 
     /**
