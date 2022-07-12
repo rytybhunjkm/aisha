@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('brithday');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->enum('type', ['normal', 'dense']);
             $table->text('note')->nullable();
             $table->unsignedBigInteger('group_id');

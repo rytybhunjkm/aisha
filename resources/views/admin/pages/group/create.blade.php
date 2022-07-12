@@ -8,38 +8,50 @@
             <div class="col">
                   <div class="card">
                         <div class="card-header bg-primary text-light" style="text-align: right">
-                              الاختبار </div>
+                              المجموعات </div>
                         <div class="card-body card-block">
-                              <form action="{{ route('exam.store') }}" method="post" class="form-horizontal">
+                              <form action="{{ route('group.store') }}" method="post" class="form-horizontal">
                                     @csrf
+
+
+                                    <x-form.text name="name" label="اسم المجموعة" :value="old('name')" />
 
 
                                     <div class="row form-group">
                                           <div class="col col-md-12">
-                                                <select class="form-control" name="teacher_name" id="teacher_name">
+                                                <select class="form-control" name="teacher_id" id="teacher_id">
                                                       <option value="">اختر المعلم</option>
                                                       @foreach ($teachers as $teacher)
                                                             <option
-                                                                  {{ $teacher->name == old('teacher_name') ? 'selected' : '' }}
-                                                                  value="{{ $teacher->name }}">
+                                                                  {{ $teacher->id == old('teacher_id') ? 'selected' : '' }}
+                                                                  value="{{ $teacher->id }}">
                                                                   {{ $teacher->name }}
                                                             </option>
                                                       @endforeach
                                                 </select>
-                                                @error('teacher_name')
+                                                @error('teacher_id')
                                                       <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                           </div>
                                     </div>
 
 
-                                    <x-form.text name="title" label="العنوان" :value="old('title')" />
-
-
-                                    <x-form.number name="max_mark" label="اعلى درجة" :value="old('max_mark')" />
-
-
-                                    <x-form.number name="min_mark" label="اقل درجة" :value="old('min_mark')" />
+                                    <div class="row form-group">
+                                          <div class="col col-md-12">
+                                                <select class="form-control" name="type" id="type">
+                                                      <option value="">اختر النوع</option>
+                                                      @foreach (getGroupTypes() as $enType => $arType)
+                                                            <option {{ $enType == old('type') ? 'selected' : '' }}
+                                                                  value="{{ $enType }}">
+                                                                  {{ $arType }}
+                                                            </option>
+                                                      @endforeach
+                                                </select>
+                                                @error('type')
+                                                      <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                          </div>
+                                    </div>
 
 
                                     <div class="row form-group">

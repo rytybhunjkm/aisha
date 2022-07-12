@@ -3,7 +3,7 @@
 use App\Http\Controllers\AttendController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\PaymentsController;
-use App\Http\Controllers\GRoupController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -58,19 +58,22 @@ Route::get('/attend/edit/{id}', [AttendController::class, 'edit'])->name('Attend
 Route::put('/attend/update', [AttendController::class, 'update'])->name('Attend.update');
 Route::delete('/attend/delete', [AttendController::class, 'delete'])->name('Attend.delete');
 
-Route::get('/exam', [ExamController::class, 'index'])->name('Exam.index');
-Route::get('/exam/create', [ExamController::class, 'create'])->name('Exam.create');
-Route::post('/exam/store', [ExamController::class, 'store'])->name('Exam.store');
-Route::get('/exam/edit/{id}', [ExamController::class, 'edit'])->name('Exam.edit');
-Route::put('/exam/update', [ExamController::class, 'update'])->name('Exam.update');
-Route::delete('/exam/delete', [ExamController::class, 'delete'])->name('Exam.delete');
+Route::group(['prefix' => 'exam', 'as' => 'exam.'], function () {
+    Route::get('/', [ExamController::class, 'index'])->name('index');
+    Route::get('create', [ExamController::class, 'create'])->name('create');
+    Route::post('store', [ExamController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [ExamController::class, 'edit'])->name('edit');
+    Route::put('update', [ExamController::class, 'update'])->name('update');
+    Route::delete('delete', [ExamController::class, 'delete'])->name('delete');
+});
 
-Route::get('/group', [GroupController::class, 'index'])->name('Group.index');
-Route::get('/group/create', [GroupController::class, 'create'])->name('Group.create');
-Route::post('/group/store', [GroupController::class, 'store'])->name('Group.store');
-Route::get('/group/edit/{id}', [GroupController::class, 'edit'])->name('Group.edit');
-Route::put('/group/update', [GroupController::class, 'update'])->name('Group.update');
-Route::delete('/group/delete', [GroupController::class, 'delete'])->name('Group.delete');
+
+Route::get('/group', [GroupController::class, 'index'])->name('group.index');
+Route::get('/group/create', [GroupController::class, 'create'])->name('group.create');
+Route::post('/group/store', [GroupController::class, 'store'])->name('group.store');
+Route::get('/group/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
+Route::put('/group/update', [GroupController::class, 'update'])->name('group.update');
+Route::delete('/group/delete', [GroupController::class, 'delete'])->name('group.delete');
 
 Route::get('/lesson', [LessonController::class, 'index'])->name('Lesson.index');
 Route::get('/lesson/create', [LessonController::class, 'create'])->name('Lesson.create');

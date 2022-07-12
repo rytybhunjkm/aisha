@@ -18,14 +18,14 @@ return new class extends Migration
             $table->unsignedBigInteger('exam_id');
             $table->unsignedBigInteger('student_id');
             $table->text('memorized');
-            $table->float('degree');
+            $table->float('degree')->default(0);
             $table->text('note')->nullable();
             $table->date('date');
             $table->timestamps();
 
 
             $table->foreign('exam_id')->references('id')->on('exams');
-            
+
             $table->foreign('student_id')->references('id')->on('students');
         });
     }
