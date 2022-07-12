@@ -41,7 +41,7 @@
                         <x-form.number name="min_mark" label="اقل درجة" :value="old('min_mark')" />
 
 
-                        <x-form.textarae name="note" label="ملاحظة" />
+                        <x-form.textarea name="note" label="ملاحظة" />
 
                 </div>
                 <div class="m-3">
