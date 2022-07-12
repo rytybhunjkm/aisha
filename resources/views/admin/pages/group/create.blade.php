@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        <x-form.textarea name="note" label="ملاحظة" />
+                        <x-form.textarea name="note" label="ملاحظة" :value="old('note')" />
 
 
                         <div class="m-3">
