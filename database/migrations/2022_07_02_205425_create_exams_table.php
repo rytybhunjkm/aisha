@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->string("teacher");
+            $table->string("title");
+            $table->float("max_mark");
+            $table->float("min_mark");
+            $table->text("note")->nullable();
             $table->timestamps();
         });
     }
