@@ -67,13 +67,15 @@ Route::group(['prefix' => 'exam', 'as' => 'exam.'], function () {
     Route::delete('delete', [ExamController::class, 'delete'])->name('delete');
 });
 
+Route::group(['prefix' => 'group', 'as' => 'group.'], function () {
 
-Route::get('/group', [GroupController::class, 'index'])->name('group.index');
-Route::get('/group/create', [GroupController::class, 'create'])->name('group.create');
-Route::post('/group/store', [GroupController::class, 'store'])->name('group.store');
-Route::get('/group/edit/{id}', [GroupController::class, 'edit'])->name('group.edit');
-Route::put('/group/update', [GroupController::class, 'update'])->name('group.update');
-Route::delete('/group/delete', [GroupController::class, 'delete'])->name('group.delete');
+    Route::get('/', [GroupController::class, 'index'])->name('index');
+    Route::get('/create', [GroupController::class, 'create'])->name('create');
+    Route::post('/store', [GroupController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [GroupController::class, 'edit'])->name('edit');
+    Route::put('/update', [GroupController::class, 'update'])->name('update');
+    Route::delete('/delete', [GroupController::class, 'delete'])->name('delete');
+});
 
 Route::get('/lesson', [LessonController::class, 'index'])->name('Lesson.index');
 Route::get('/lesson/create', [LessonController::class, 'create'])->name('Lesson.create');
