@@ -42,7 +42,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
-        return redirect()->back();
+        return redirect(route("user.index"));
     }
 
     public function edit()

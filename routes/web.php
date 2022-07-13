@@ -89,9 +89,12 @@ Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('Stud
 Route::put('/student/update', [StudentController::class, 'update'])->name('Student.update');
 Route::delete('/student/delete', [StudentController::class, 'delete'])->name('Student.delete');
 
-Route::get('/user', [UserController::class, 'index'])->name('User.index');
-Route::get('/user/create', [UserController::class, 'create'])->name('User.create');
-Route::post('/user/store', [UserController::class, 'store'])->name('User.store');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('User.edit');
-Route::put('/user/update', [UserController::class, 'update'])->name('User.update');
-Route::delete('/user/delete', [UserController::class, 'delete'])->name('User.delete');
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+
+    Route::get('', [UserController::class, 'index'])->name('index');
+    Route::get('create', [UserController::class, 'create'])->name('create');
+    Route::post('store', [UserController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+    Route::put('update', [UserController::class, 'update'])->name('update');
+    Route::delete('delete', [UserController::class, 'delete'])->name('delete');
+});
