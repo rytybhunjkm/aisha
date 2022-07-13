@@ -8,3 +8,13 @@ function getGroupTypes()
         'mom' => 'امهات'
     ];
 }
+
+
+
+function getStudentTypes()
+{
+    return [
+        'normal' => 'عادي',
+        'dense' => 'مكثف',
+    ];
+}
