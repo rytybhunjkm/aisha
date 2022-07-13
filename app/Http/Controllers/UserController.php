@@ -13,7 +13,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.user.index');
+        $users = User::get();
+        return view('admin.pages.user.index',[
+            "users" => $users
+        ]);
     }
 
     public function create()
