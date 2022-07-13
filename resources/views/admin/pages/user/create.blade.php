@@ -14,11 +14,11 @@
                     <form action="{{ route('user.store') }}" method="post" class="form-horizontal">
                         @csrf
 
-                        <x-form.text name="name" label="الإسم" />
+                        <x-form.text name="name" label="الإسم" :value="old('name')" />
 
-                        <x-form.email name="email" label="البريد الالكتروني" />
+                        <x-form.email name="email" label="البريد الالكتروني" :value="old('email')" />
 
-                        <x-form.password name="password" label="كلمه السر" />
+                        <x-form.password name="password" label="كلمه السر"  />
 
                         <x-form.password name="password_confirmation" label="اعد كتابه كلمه السر" />
 
