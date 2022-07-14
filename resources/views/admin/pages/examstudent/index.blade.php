@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('group.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('examstudent.create') }}" class="btn btn-primary">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -30,15 +30,23 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
-                                                name</th>
+                                                exam_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 332px;"
                                                 aria-label="Position: activate to sort column ascending">
-                                                teacher_id</th>
+                                                student_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 148px;"
                                                 aria-label="Office: activate to sort column ascending">
-                                                type</th>
+                                                memorized</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                degree</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                date</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
@@ -46,13 +54,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($groups as $index => $group)
+                                        @foreach ($examstudents as $index => $examstudent)
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $group->name }}</td>
-                                                <td>{{ $group->teacher_id }}</td>
-                                                <td>{{ $group->type }}</td>
-                                                <td>{{ $group->note }}</td>
+                                                <td>{{ $examstudent->exam_id }}</td>
+                                                <td>{{ $examstudent->student_id }}</td>
+                                                <td>{{ $examstudent->memorized }}</td>
+                                                <td>{{ $examstudent->degree }}</td>
+                                                <td>{{ $examstudent->date }}</td>
+                                                <td>{{ $examstudent->note }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

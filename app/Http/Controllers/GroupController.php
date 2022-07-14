@@ -7,10 +7,17 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use function Ramsey\Uuid\v1;
+
 class GroupController extends Controller
 {
     public function index()
     {
+        $groups = Group::get();
+
+        return view('admin.pages.group.index', [
+            'groups' => $groups
+        ]);
     }
 
     public function create()
@@ -26,6 +33,7 @@ class GroupController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'teacher_id' => 'required|exists:teachers,id',
+            'type' => 'required|in:kids,mid,mom',
             'note' => 'nullable'
         ]);
 
@@ -33,11 +41,12 @@ class GroupController extends Controller
         Group::create([
             'teacher_id' => $request->teacher_id,
             'name' => $request->name,
+            'type' => $request->type,
             'note' => $request->note,
         ]);
 
         Alert::success('نجاح', 'تمت العملية بنجاح');
-        return redirect()->back();
+        return redirect(route('group.index'));
     }
 
     public function edit()
