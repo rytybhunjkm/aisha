@@ -34,12 +34,12 @@ Route::delete('/teacher/destroy', [TeacherController::class, 'destroy'])->name('
 
 
 
-Route::get('/Payment', [PaymentsController::class, 'index'])->name('Payment.index');
-Route::get('/Payment/create', [PaymentsController::class, 'create'])->name('Payment.create');
-Route::post('/Payment/store', [PaymentsController::class, 'store'])->name('Payment.store');
-Route::get('/Payment/edit/{id}', [PaymentsController::class, 'edit'])->name('Payment.edit');
-Route::put('/Payment/update', [PaymentsController::class, 'update'])->name('Payment.update');
-Route::delete('/Payment/destroy', [PaymentsController::class, 'destroy'])->name('Payment.destroy');
+Route::get('/payment', [PaymentsController::class, 'index'])->name('payment.index');
+Route::get('/payment/create', [PaymentsController::class, 'create'])->name('payment.create');
+Route::post('/payment/store', [PaymentsController::class, 'store'])->name('payment.store');
+Route::get('/payment/edit/{id}', [PaymentsController::class, 'edit'])->name('payment.edit');
+Route::put('/payment/update', [PaymentsController::class, 'update'])->name('payment.update');
+Route::delete('/payment/destroy', [PaymentsController::class, 'destroy'])->name('Payment.destroy');
 
 
 

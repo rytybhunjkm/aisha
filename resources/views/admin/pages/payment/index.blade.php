@@ -11,7 +11,7 @@
                   <div class="card">
                         <div class="card-header">
                               <strong class="card-title">Data Table</strong>
-                              <a href="{{ route('teacher.create') }}" class="btn btn-primary">Create</a>
+                              <a href="{{ route('payment.create') }}" class="btn btn-primary">Create</a>
                         </div>
                         <div class="card-body">
                               <div id="bootstrap-data-table_wrapper"
@@ -34,18 +34,18 @@
                                                                         colspan="1" style="width: 205px;"
                                                                         aria-sort="ascending"
                                                                         aria-label="Name: activate to sort column descending">
-                                                                        name</th>
-                                                                  
+                                                                        student</th>
+                                                                  <th class="sorting" tabindex="0"
+                                                                        aria-controls="bootstrap-data-table" rowspan="1"
+                                                                        colspan="1" style="width: 332px;"
+                                                                        aria-label="Position: activate to sort column ascending">
+                                                                        payed</th>
                                                                   <th class="sorting" tabindex="0"
                                                                         aria-controls="bootstrap-data-table" rowspan="1"
                                                                         colspan="1" style="width: 148px;"
                                                                         aria-label="Office: activate to sort column ascending">
-                                                                        birthday</th>
-                                                                  <th class="sorting" tabindex="0"
-                                                                        aria-controls="bootstrap-data-table" rowspan="1"
-                                                                        colspan="1" style="width: 122px;"
-                                                                        aria-label="Salary: activate to sort column ascending">
-                                                                        phone</th>
+                                                                        month</th>
+                                                                  
                                                                   <th class="sorting" tabindex="0"
                                                                         aria-controls="bootstrap-data-table" rowspan="1"
                                                                         colspan="1" style="width: 122px;"
@@ -54,13 +54,14 @@
                                                             </tr>
                                                       </thead>
                                                       <tbody>
-                                                            @foreach ($teachers as $index => $teacher)
+                                                            @foreach ($payments as $index => $payment)
                                                                   <tr role="row" class="odd">
                                                                         <td class="sorting_1">{{ ++$index }}</td>
-                                                                        <td>{{ $teacher->name }}</td>
-                                                                        <td>{{ $teacher->birthday }}</td>
-                                                                        <td>{{ $teacher->phone }}</td>
-                                                                        <td>{{ $teacher->note }}</td>
+                                                                        <td>{{ $payment->student_id }}</td>
+                                                                        <td>{{ $payment->payed }}</td>
+                                                                        <td>{{ $payment->month }}</td>
+                                                                        
+                                                                        <td>{{ $payment->note }}</td>
                                                                   </tr>
                                                             @endforeach
                                                       </tbody>

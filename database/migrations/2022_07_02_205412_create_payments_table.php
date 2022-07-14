@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger("student_id");
             $table->double("payed");
             $table->integer("month");
-            $table->text("onte")->nullable();
+            $table->text("note")->nullable();
             $table->timestamps();
 
 

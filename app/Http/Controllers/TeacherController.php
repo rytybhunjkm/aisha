@@ -10,8 +10,10 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.teacher.index');
-    }
+        $teachers = Teacher::get();
+        return view('admin.pages.teacher.index', [
+            'teachers' => $teachers
+        ]);    }
 
     public function create()
     {
