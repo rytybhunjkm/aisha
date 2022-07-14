@@ -13,13 +13,9 @@ class AttendController extends Controller
 
     public function index()
     {
-        $students  = Student::get();
-        $Lessons = Lesson::get();
         $attends = Attend::get();
 
         return view('admin.pages.attende.index', [
-            'students' => $students,
-            'Lessons' => $Lessons,
             'attends' => $attends
         ]);
     }
@@ -28,7 +24,6 @@ class AttendController extends Controller
     {
         $students  = Student::get();
         $lessons = Lesson::get();
-
 
         return view('admin.pages.attende.create', [
             'students' => $students,
@@ -40,16 +35,14 @@ class AttendController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_id' => 'required',
-            'lesson_id' => 'nullable',
+            'student_id' => 'required|exists:students,id',
+            'lesson_id' => 'required|exists:lessons,id',
             'date' => 'required',
             'note' => 'nullable',
 
         ]);
 
-        dd($request);
         Attend::create([
-
             'student_id' => $request->student_id,
             'lesson_id' =>  $request->lesson_id,
             'date' =>  $request->date,

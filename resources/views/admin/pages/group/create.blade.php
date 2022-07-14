@@ -10,7 +10,7 @@
                 <div class="card-header bg-primary text-light" style="text-align: right">
                     المجموعات </div>
                 <div class="card-body card-block">
-                    <form action="{{ route('group.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.group.store') }}" method="post" class="form-horizontal">
                         @csrf
 
 

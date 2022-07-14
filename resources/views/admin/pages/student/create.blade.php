@@ -11,7 +11,7 @@
                     إضافة طالب
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{ route('student.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.student.store') }}" method="post" class="form-horizontal">
                         @csrf
 
                         <x-form.text name="name" label="الإسم" :value="old('name')" />

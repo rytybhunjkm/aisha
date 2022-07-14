@@ -46,7 +46,7 @@ class GroupController extends Controller
         ]);
 
         Alert::success('نجاح', 'تمت العملية بنجاح');
-        return redirect(route('group.index'));
+        return redirect(route('admin.group.index'));
     }
 
     public function edit()

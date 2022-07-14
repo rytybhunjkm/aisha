@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('group.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('admin.group.create') }}" class="btn btn-primary">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"

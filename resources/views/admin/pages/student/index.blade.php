@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('student.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('admin.student.create') }}" class="btn btn-primary">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -66,7 +66,7 @@
                                                 <td>{{ $student->phone }}</td>
                                                 <td>{{ $student->type }}</td>
                                                 <td>{{ $student->note }}</td>
-                                                <td>{{ $student->group_id }}</td>
+                                                <td>{{ $student->group->name }}</td>
                                             </tr>
                                         @endforeach
 

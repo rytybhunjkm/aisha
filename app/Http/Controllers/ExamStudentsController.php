@@ -34,17 +34,17 @@ class ExamStudentsController extends Controller
     {
         $request->validate([
             'exam_id' => 'required|exists:exams,id',
-            'student_id' => 'required',
+            'student_id' => 'required|exists:students,id',
             'memorized' => 'required',
-            'degree' => 'required|numeric',
+            'degree' => 'nullable|numeric',
             'date' => 'required|date',
-            'note' => 'required'
+            'note' => 'nullable'
         ]);
         ExamStudent::create([
             'exam_id' => $request->exam_id,
             'student_id' => $request->student_id,
             'memorized' => $request->memorized,
-            'degree' => $request->degree,
+            'degree' => $request->degree ?? 0,
             'date' => $request->date,
             'note' => $request->note,
         ]);

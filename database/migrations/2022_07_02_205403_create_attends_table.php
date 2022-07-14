@@ -28,10 +28,10 @@ return new class extends Migration
                 ->on('students')
                 ->onDelete('CASCADE');
 
-            // $table->foreign('lesson_id')
-            //     ->references('id')
-            //     ->on('lessons')
-            //     ->onDelete('CASCADE');
+            $table->foreign('lesson_id')
+                ->references('id')
+                ->on('lessons')
+                ->onDelete('CASCADE');
         });
     }
 

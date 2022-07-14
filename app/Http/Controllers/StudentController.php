@@ -16,21 +16,17 @@ class StudentController extends Controller
     public function index()
     {
         $students  = Student::get();
-        $groups = Group::get();
 
         return view('admin.pages.student.index', [
             'students' => $students,
-            'groups' => $groups
         ]);
     }
 
     public function create()
     {
-        $students = Student::get();
         $groups = Group::get();
 
         return view('admin.pages.student.create', [
-            'students' =>  $students,
             'groups' => $groups
         ]);
     }
@@ -43,7 +39,7 @@ class StudentController extends Controller
             'phone' => 'required|min:11',
             'type' => 'required|in:normal,dense',
             'note' => 'nullable',
-            'group_id' => 'required'
+            'group_id' => 'required|exists:groups,id'
         ]);
 
 
