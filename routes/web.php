@@ -51,15 +51,20 @@ Route::put('/ExamStudents/update', [ExamStudentsController::class, 'update'])->n
 Route::delete('/ExamStudents/destroy', [ExamStudentsController::class, 'destroy'])->name('ExamStudents.destroy');
 
 
-Route::get('/attend', [AttendController::class, 'index'])->name('AttendController.index');
-Route::get('/attend/create', [AttendController::class, 'create'])->name('Attend.create');
-Route::post('/attend/store', [AttendController::class, 'store'])->name('Attend.store');
-Route::get('/attend/edit/{id}', [AttendController::class, 'edit'])->name('Attend.edit');
-Route::put('/attend/update', [AttendController::class, 'update'])->name('Attend.update');
-Route::delete('/attend/delete', [AttendController::class, 'delete'])->name('Attend.delete');
+
+
+Route::group(['prefix' => 'attend',  'as' => 'attend.'], function () {
+    Route::get('', [AttendController::class, 'index'])->name('index');
+    Route::get('create', [AttendController::class, 'create'])->name('create');
+    Route::post('store', [AttendController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [AttendController::class, 'edit'])->name('edit');
+    Route::put('update', [AttendController::class, 'update'])->name('update');
+    Route::delete('delete', [AttendController::class, 'delete'])->name('delete');
+});
+
 
 Route::group(['prefix' => 'exam', 'as' => 'exam.'], function () {
-    Route::get('/', [ExamController::class, 'index'])->name('index');
+    Route::get('', [ExamController::class, 'index'])->name('index');
     Route::get('create', [ExamController::class, 'create'])->name('create');
     Route::post('store', [ExamController::class, 'store'])->name('store');
     Route::get('edit/{id}', [ExamController::class, 'edit'])->name('edit');
@@ -82,16 +87,21 @@ Route::get('/lesson/edit/{id}', [LessonController::class, 'edit'])->name('Lesson
 Route::put('/lesson/update', [LessonController::class, 'update'])->name('Lesson.update');
 Route::delete('/lesson/delete', [LessonController::class, 'delete'])->name('Lesson.delete');
 
-Route::get('/student', [StudentController::class, 'index'])->name('Student.index');
-Route::get('/student/create', [StudentController::class, 'create'])->name('Student.create');
-Route::post('/student/store', [StudentController::class, 'store'])->name('Student.store');
-Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('Student.edit');
-Route::put('/student/update', [StudentController::class, 'update'])->name('Student.update');
-Route::delete('/student/delete', [StudentController::class, 'delete'])->name('Student.delete');
 
-Route::get('/user', [UserController::class, 'index'])->name('User.index');
-Route::get('/user/create', [UserController::class, 'create'])->name('User.create');
-Route::post('/user/store', [UserController::class, 'store'])->name('User.store');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('User.edit');
-Route::put('/user/update', [UserController::class, 'update'])->name('User.update');
-Route::delete('/user/delete', [UserController::class, 'delete'])->name('User.delete');
+Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
+    Route::get('', [StudentController::class, 'index'])->name('index');
+    Route::get('create', [StudentController::class, 'create'])->name('create');
+    Route::post('store', [StudentController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [StudentController::class, 'edit'])->name('edit');
+    Route::put('update', [StudentController::class, 'update'])->name('update');
+    Route::delete('delete', [StudentController::class, 'delete'])->name('Sdelete');
+});
+
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('', [UserController::class, 'index'])->name('index');
+    Route::get('create', [UserController::class, 'create'])->name('create');
+    Route::post('store', [UserController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+    Route::put('update', [UserController::class, 'update'])->name('update');
+    Route::delete('delete', [UserController::class, 'delete'])->name('delete');
+});

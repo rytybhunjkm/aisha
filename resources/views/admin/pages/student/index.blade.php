@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('user.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('student.create') }}" class="btn btn-primary">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -23,34 +23,53 @@
                                     aria-describedby="bootstrap-data-table_info">
                                     <thead>
                                         <tr role="row">
+                                            
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
-                                                id</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
+                                                #</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
                                                 Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 332px;"
                                                 aria-label="Position: activate to sort column ascending">
-                                                email</th>
-                                          {{-- <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                brithday</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 148px;"
                                                 aria-label="Office: activate to sort column ascending">
-                                                password</th>
-                                        </tr> --}}
+                                                phone</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                type</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                note</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                group_id</th>
+                                        </tr>
+
+                        
+
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $index => $user)
-                                            <tr role="row" class="even">
-
+                                        @foreach ($students as $index => $student)
+                                            <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                              {{--  <td>{{ $user->password }}</td>--}}
+                                                <td>{{ $student->name }}</td>
+                                                <td>{{ $student->brithday }}</td>
+                                                <td>{{ $student->phone }}</td>
+                                                <td>{{ $student->type }}</td>
+                                                <td>{{ $student->note }}</td>
+                                                <td>{{ $student->group_id }}</td>
                                             </tr>
                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

@@ -13,7 +13,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.user.index');
+        $users = User::get();
+        return view('admin.pages.user.index',[
+            "users" => $users
+        ]);
     }
 
     public function create()
@@ -39,7 +42,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
-        return redirect()->back();
+        return redirect(route("user.index"));
     }
 
     public function edit()
