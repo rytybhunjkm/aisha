@@ -10,8 +10,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('admin.student.create') }}" class="btn btn-primary">Create</a>
+                    <strong class="card-title">الطلاب</strong>
+                    <a href="{{ route('admin.student.create') }}" class="btn btn-primary float-right">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -53,9 +53,13 @@
                                                 aria-label="Salary: activate to sort column ascending">
                                                 Group Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
-                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                rowspan="1" colspan="1"
                                                 aria-label="Salary: activate to sort column ascending">
-                                                Actions</th>
+                                                Edit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Delete</th>
                                         </tr>
 
                         
@@ -72,7 +76,10 @@
                                                 <td>{{ $student->note }}</td>
                                                 <td>{{ $student->group->name }}</td>
                                                 <td>
-                                                    <a href="{{route('admin.student.edit',$student->id)}}" class="btn btn-info">Edit</a>
+                                                    <x-action.edit :route="route('admin.student.edit',$student->id)" />
+                                                </td>
+                                                <td>
+                                                    <x-action.delete :value="$student->id" :route="route('admin.student.delete')" />
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -58,18 +58,51 @@ class StudentController extends Controller
     public function edit($id)
     {
         $groups = Group::get();
+        $student = Student::find($id);
         return view('admin.pages.student.edit',[
-            'groups' => $groups
+            'groups' => $groups,
+            'student' => $student
         ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $request->validate([
+            'student_id' => 'required|exists:students,id',
+            'name' => 'required|min:3',
+            'brithday' => 'nullable|date',
+            'phone' => 'required|min:11',
+            'type' => 'required|in:' . getTypesInString(getStudentTypes()),
+            'note' => 'nullable',
+            'group_id' => 'required|exists:groups,id'
+        ]);
 
+        $student = Student::find($request->student_id);
+
+        $student->update([
+            'name' => $request->name,
+            'brithday' => $request->brithday,
+            'phone' => $request->phone,
+            'type' => $request->type,
+            'group_id' => $request->group_id,
+            'note' => $request->note,
+        ]);
+
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect(route('admin.student.index'));
     }
 
-    public function destroy()
+    public function delete(Request $request)
     {
+        $request->validate([
+            'id' => 'required|exists:students,id',
+        ]);
 
+        $student = Student::find($request->id);
+        dd($student);
+        $student->delete();
+
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect()->back();
     }
 }
