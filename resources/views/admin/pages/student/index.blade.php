@@ -51,7 +51,11 @@
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
-                                                group_id</th>
+                                                Group Name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Actions</th>
                                         </tr>
 
                         
@@ -64,9 +68,12 @@
                                                 <td>{{ $student->name }}</td>
                                                 <td>{{ $student->brithday }}</td>
                                                 <td>{{ $student->phone }}</td>
-                                                <td>{{ $student->type }}</td>
+                                                <td>{{ getStudentTypes()[$student->type] }}</td>
                                                 <td>{{ $student->note }}</td>
                                                 <td>{{ $student->group->name }}</td>
+                                                <td>
+                                                    <a href="{{route('admin.student.edit',$student->id)}}" class="btn btn-info">Edit</a>
+                                                </td>
                                             </tr>
                                         @endforeach
 

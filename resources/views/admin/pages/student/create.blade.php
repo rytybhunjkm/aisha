@@ -16,84 +16,15 @@
 
                         <x-form.text name="name" label="الإسم" :value="old('name')" />
                         
-                        
-                        
-                        <div class="row form-group">
-                            <div class="col col-md-12">
-                                <div class="input-group">
-                                    <div class="input-group-addon">تاريخ الميلاد</div>
-                                    <input type="date" id="brithday" name="brithday" class="form-control" value="{{old('brithday')}}">
-                                </div>
-                                @error('brithday')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-
+                        <x-form.date name="brithday" label="تاريخ الميلاد" :value="old('brithday')" />
                         
                         <x-form.text name="phone" label="الهاتف" :value="old('phone')" />
-                        
-                        
-                        
-                        <div class="row form-group">
-                            <div class="col col-md-12">
-                                <select class="form-control" name="type" id="type">
-                                    <option value="">اختر النوع</option>
-                                    @foreach (getStudentTypes() as $enType => $arType)
-                                    
-                                        <option {{ $enType == old('type') ? 'selected' : '' }}
-                                            value="{{ $enType }}">
-                                            {{ $arType }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('type')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
 
+                        <x-form.select-array name="type" :array="getStudentTypes()" label="اختر النوع" :selected="old('type')" />
 
+                        <x-form.select-object name="group_id" label="اختر المجموعة" :collection="$groups" field="name" :selected="old('group_id')" />
 
-
-                        <div class="row form-group">
-                              <div class="col col-md-12">
-                                    <select class="form-control" name="group_id" id="group_id">
-                                          <option value="">اختر المجموعه</option>
-                                          @foreach ($groups as  $group)
-                                                <option
-                                                      {{ $group->id == old('group_id') ? 'selected' : '' }}
-                                                      value="{{ $group->id }}">
-                                                      {{ $group->name }}
-                                                </option>
-                                          @endforeach
-                                    </select>
-                                    @error('group_id')
-                                          <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                              </div>
-                        </div>
-
-
-                        
-                        
-                        <div class="row form-group">
-                            <div class="col col-md-12" style="text-align: right">
-                                <label>ملاحظة</label>
-                                <div class="input-group">
-                                    <textarea class="form-control" name="note" id="note" cols="30" rows="10">
-                                        
-                                    </textarea>
-                                </div>
-                                @error('note')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
+                        <x-form.textarea name="note" label="ملاحظة" :value="old('note')" />
 
                         <div class="m-3">
                             <button type="submit" class="btn btn-success float-right">

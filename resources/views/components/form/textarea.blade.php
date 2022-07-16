@@ -3,8 +3,8 @@
         <label>{{ $label }}</label>
         <div class="input-group">
             <textarea class="form-control" name="{{ $name }}" id="{{ $name }}" cols="30" rows="10">
-                      {{ $value }}
-                </textarea>
+                {{ $value }}
+            </textarea>
         </div>
         @error($name)
             <p class="text-danger">{{ $message }}</p>

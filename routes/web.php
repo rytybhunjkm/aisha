@@ -100,7 +100,7 @@ Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
         Route::post('store', [StudentController::class, 'store'])->name('store');
         Route::get('edit/{id}', [StudentController::class, 'edit'])->name('edit');
         Route::put('update', [StudentController::class, 'update'])->name('update');
-        Route::delete('delete', [StudentController::class, 'delete'])->name('Sdelete');
+        Route::delete('delete', [StudentController::class, 'delete'])->name('delete');
     });
 
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

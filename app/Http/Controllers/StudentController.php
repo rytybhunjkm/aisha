@@ -37,7 +37,7 @@ class StudentController extends Controller
             'name' => 'required|min:3',
             'brithday' => 'nullable|date',
             'phone' => 'required|min:11',
-            'type' => 'required|in:normal,dense',
+            'type' => 'required|in:' . getTypesInString(getStudentTypes()),
             'note' => 'nullable',
             'group_id' => 'required|exists:groups,id'
         ]);
@@ -52,18 +52,24 @@ class StudentController extends Controller
             'note' => $request->note,
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
-        return redirect()->back();
+        return redirect(route('admin.student.index'));
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $groups = Group::get();
+        return view('admin.pages.student.edit',[
+            'groups' => $groups
+        ]);
     }
 
     public function update()
     {
+
     }
 
     public function destroy()
     {
+
     }
 }
