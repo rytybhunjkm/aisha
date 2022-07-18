@@ -10,4 +10,10 @@ class Group extends Model
     use HasFactory;
 
     protected $fillable = ['teacher_id', 'type', 'note', 'name'];
+
+    public function group()
+    {
+
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
 }

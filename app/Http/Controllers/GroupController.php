@@ -49,15 +49,54 @@ class GroupController extends Controller
         return redirect(route('admin.group.index'));
     }
 
-    public function edit()
+    public function edit($id)
     {
+
+        $groups = Group::find($id);
+        $teachers = Teacher::get();
+
+        return view('admin.pages.group.edit', [
+            'teachers' => $teachers,
+            'groups' => $groups
+        ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3',
+            'teacher_id' => 'required|exists:teachers,id',
+            'type' => 'required|in:kids,mid,mom',
+            'note' => 'nullable'
+        ]);
+
+        $group = Group::find($request->group_id);
+
+
+        $group->update([
+            'teacher_id' => $request->teacher_id,
+            'name' => $request->name,
+            'type' => $request->type,
+            'note' => $request->note,
+        ]);
+
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect(route('admin.group.index'));
     }
 
-    public function destroy()
+    public function delete(Request $request)
     {
+
+        $request->validate([
+            'id' => 'required|exists:groups,id'
+
+        ]);
+
+        $group = Group::find($request->id);
+
+        $group->delete();
+
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect(route('admin.group.index'));
     }
 }
