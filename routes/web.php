@@ -25,16 +25,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin/master');
 });
-Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
-    Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
-    Route::post('/teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
-    Route::get('/teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
-    Route::put('/teacher/update', [TeacherController::class, 'update'])->name('teacher.update');
-    Route::delete('/teacher/destroy', [TeacherController::class, 'destroy'])->name('teacher.destroy');
-
-
+    Route::group(['prefix' => 'teacher', 'as' => 'teacher.'], function () {
+        Route::get('', [TeacherController::class, 'index'])->name('index');
+        Route::get('/create', [TeacherController::class, 'create'])->name('create');
+        Route::post('/store', [TeacherController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [TeacherController::class, 'edit'])->name('edit');
+        Route::put('/update', [TeacherController::class, 'update'])->name('update');
+        Route::delete('/delete', [TeacherController::class, 'delete'])->name('delete');
+    });
 
     Route::get('/Payment', [PaymentsController::class, 'index'])->name('Payment.index');
     Route::get('/Payment/create', [PaymentsController::class, 'create'])->name('Payment.create');
@@ -111,5 +111,4 @@ Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
         Route::put('update', [UserController::class, 'update'])->name('update');
         Route::delete('delete', [UserController::class, 'delete'])->name('delete');
     });
-
 });
