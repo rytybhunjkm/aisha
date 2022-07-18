@@ -11,7 +11,7 @@
                     الحضور
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{ route('attend.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.attend.store') }}" method="post" class="form-horizontal">
                         @csrf
 
                         <div class="row form-group">
@@ -70,8 +70,7 @@
                             <div class="col col-md-6">
                                 <div class="input-group">
                                     <div class="input-group-addon">الحضور</div>
-                                    <input class="mr-4" type="checkbox" id="attend" name="attend" 
-                                        value="1">
+                                    <input class="mr-4" type="checkbox" id="attend" name="attend" value="1">
                                 </div>
                                 @error('attend')
                                     <p class="text-danger">{{ $message }}</p>

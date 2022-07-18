@@ -46,22 +46,57 @@ class AttendController extends Controller
             'student_id' => $request->student_id,
             'lesson_id' =>  $request->lesson_id,
             'date' =>  $request->date,
-            'attend' =>  $request->attend,
+            'attend' =>  $request->attend == 1 ? "1" : "0",
             'note' =>  $request->note,
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
         return redirect()->back();
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $attend = Attend::find($id);
+        $students  = Student::get();
+        $lessons = Lesson::get();
+
+
+
+        return view('admin.pages.attende.edit', [
+            'students' => $students,
+            'lessons' => $lessons,
+            'attend' => $attend
+
+        ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $request->validate([
+            'student_id' => 'required|exists:students,id',
+            'lesson_id' => 'required|exists:lessons,id',
+            'date' => 'required',
+            'note' => 'nullable',
+
+        ]);
+
+        $attend = Attend::find($request->attend_id);
+        $attend->update([
+            'student_id' => $request->student_id,
+            'lesson_id' =>  $request->lesson_id,
+            'date' =>  $request->date,
+            'attend' =>  $request->attend == 1 ? "1" : "0",
+            'note' =>  $request->note,
+        ]);
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect(route('admin.attend.index'));
     }
 
-    public function destroy()
+    public function delete(Request $request)
     {
+        $attend = Attend::find($request->id);
+
+        $attend->delete();
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+        return redirect()->back();
     }
 }

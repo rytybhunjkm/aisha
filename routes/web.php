@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin/master');
 });
-Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
     Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
@@ -111,5 +111,4 @@ Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
         Route::put('update', [UserController::class, 'update'])->name('update');
         Route::delete('delete', [UserController::class, 'delete'])->name('delete');
     });
-
 });
