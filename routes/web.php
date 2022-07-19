@@ -36,13 +36,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::delete('/delete', [TeacherController::class, 'delete'])->name('delete');
     });
 
-    Route::get('/Payment', [PaymentsController::class, 'index'])->name('Payment.index');
-    Route::get('/Payment/create', [PaymentsController::class, 'create'])->name('Payment.create');
-    Route::post('/Payment/store', [PaymentsController::class, 'store'])->name('Payment.store');
-    Route::get('/Payment/edit/{id}', [PaymentsController::class, 'edit'])->name('Payment.edit');
-    Route::put('/Payment/update', [PaymentsController::class, 'update'])->name('Payment.update');
-    Route::delete('/Payment/destroy', [PaymentsController::class, 'destroy'])->name('Payment.destroy');
-
+    Route::group(['prefix' => 'Payment', 'as' => 'Payment.'], function () {
+        Route::get('', [PaymentsController::class, 'index'])->name('index');
+        Route::get('/create', [PaymentsController::class, 'create'])->name('create');
+        Route::post('/store', [PaymentsController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [PaymentsController::class, 'edit'])->name('edit');
+        Route::put('/update', [PaymentsController::class, 'update'])->name('update');
+        Route::delete('/delete', [PaymentsController::class, 'delete'])->name('delete');
+    });
 
     Route::group(['prefix' => 'examstudent', 'as' => 'examstudent.'], function () {
 
