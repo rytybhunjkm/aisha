@@ -10,8 +10,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('examstudent.create') }}" class="btn btn-primary">Create</a>
+                    <strong class="card-title">بيانات اختبارات الطلاب</strong>
+                    <a href="{{ route('admin.examstudent.create') }}" class="btn btn-primary float-right">إضافه </a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -30,11 +30,11 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
-                                                exam_id</th>
+                                                exam title</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 332px;"
                                                 aria-label="Position: activate to sort column ascending">
-                                                student_id</th>
+                                                student Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 148px;"
                                                 aria-label="Office: activate to sort column ascending">
@@ -51,18 +51,33 @@
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
                                                 note</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Edit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Delete</th>
+                                        </tr>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($examstudents as $index => $examstudent)
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $examstudent->exam_id }}</td>
-                                                <td>{{ $examstudent->student_id }}</td>
+                                                <td>{{ $examstudent->exam->title }}</td>
+                                                <td>{{ $examstudent->student->name }}</td>
                                                 <td>{{ $examstudent->memorized }}</td>
                                                 <td>{{ $examstudent->degree }}</td>
                                                 <td>{{ $examstudent->date }}</td>
                                                 <td>{{ $examstudent->note }}</td>
+                                                <td>
+                                                    <x-action.edit :route="route('admin.examstudent.edit', $examstudent->id)" />
+                                                </td>
+                                                <td>
+                                                    <x-action.delete :value="$examstudent->id" :route="route('admin.examstudent.delete')" />
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

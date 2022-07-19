@@ -40,6 +40,10 @@
                                                 <i class="fa fa-puzzle-piece"></i>
                                                 <a href="{{route('admin.Payment.index')}}">المدفوعات</a>
                                           </li>
+                                          <li>
+                                                <i class="fa fa-puzzle-piece"></i>
+                                                <a href="{{route('admin.examstudent.index')}}">إختبارات الطلاب</a>
+                                          </li>
                                     </ul>
                               </li>
                         </ul>

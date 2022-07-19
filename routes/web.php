@@ -46,13 +46,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     });
 
     Route::group(['prefix' => 'examstudent', 'as' => 'examstudent.'], function () {
-
         Route::get('', [ExamStudentsController::class, 'index'])->name('index');
         Route::get('/create', [ExamStudentsController::class, 'create'])->name('create');
         Route::post('/store', [ExamStudentsController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ExamStudentsController::class, 'edit'])->name('edit');
         Route::put('/update', [ExamStudentsController::class, 'update'])->name('update');
-        Route::delete('/destroy', [ExamStudentsController::class, 'destroy'])->name('destroy');
+        Route::delete('/delete', [ExamStudentsController::class, 'delete'])->name('delete');
     });
 
 
