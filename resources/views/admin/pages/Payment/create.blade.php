@@ -8,18 +8,20 @@
         <div class="col">
             <div class="card">
                 <div class="card-header bg-primary text-light" style="text-align: right">
-                    إضافة معلم
+                    إضافة مدفوعات
                 </div>
                 <div class="card-body card-block">
-                    <form action="{{ route('admin.teacher.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.Payment.store') }}" method="post" class="form-horizontal">
                         @csrf
-                        <x-form.text name="name" label="الإسم" :value="old('name')" />
 
-                        <x-form.date name="birthday" label="تاريخ الميلاد" :value="old('birthday')" />
+                        <x-form.select-object name="student_id" label="اختر الطالب" :collection="$students" field="name"
+                            :selected="old('student_id')" />
 
-                        <x-form.text name="phone" label="الهاتف" :value="old('phone')" />
+                        <x-form.number name="payed" label="الدفع" :value="old('payed')" />
 
-                        <x-form.textarea name="note" label="ملاحظة" :value="old('note')" />
+                        <x-form.number name="month" label="الشهر" :value="old('month')" />
+
+                        <x-form.textarea name="onte" label="ملاحظة" :value="old('onte')" />
 
                         <div class="m-3">
                             <button type="submit" class="btn btn-success float-right">

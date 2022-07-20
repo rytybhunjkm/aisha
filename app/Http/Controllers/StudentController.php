@@ -100,7 +100,6 @@ class StudentController extends Controller
         ]);
 
         $student = Student::find($request->id);
-        // dd($student);
         $student->delete();
 
         Alert::success('نجاح', 'تمت العملية بنجاح');
