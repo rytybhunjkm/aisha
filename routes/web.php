@@ -25,33 +25,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin/master');
 });
-Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
-    Route::get('/teacher/create', [TeacherController::class, 'create'])->name('teacher.create');
-    Route::post('/teacher/store', [TeacherController::class, 'store'])->name('teacher.store');
-    Route::get('/teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
-    Route::put('/teacher/update', [TeacherController::class, 'update'])->name('teacher.update');
-    Route::delete('/teacher/destroy', [TeacherController::class, 'destroy'])->name('teacher.destroy');
+    Route::group(['prefix' => 'teacher', 'as' => 'teacher.'], function () {
+        Route::get('', [TeacherController::class, 'index'])->name('index');
+        Route::get('/create', [TeacherController::class, 'create'])->name('create');
+        Route::post('/store', [TeacherController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [TeacherController::class, 'edit'])->name('edit');
+        Route::put('/update', [TeacherController::class, 'update'])->name('update');
+        Route::delete('/delete', [TeacherController::class, 'delete'])->name('delete');
+    });
 
-
-
-    Route::get('/Payment', [PaymentsController::class, 'index'])->name('Payment.index');
-    Route::get('/Payment/create', [PaymentsController::class, 'create'])->name('Payment.create');
-    Route::post('/Payment/store', [PaymentsController::class, 'store'])->name('Payment.store');
-    Route::get('/Payment/edit/{id}', [PaymentsController::class, 'edit'])->name('Payment.edit');
-    Route::put('/Payment/update', [PaymentsController::class, 'update'])->name('Payment.update');
-    Route::delete('/Payment/destroy', [PaymentsController::class, 'destroy'])->name('Payment.destroy');
-
+    Route::group(['prefix' => 'Payment', 'as' => 'Payment.'], function () {
+        Route::get('', [PaymentsController::class, 'index'])->name('index');
+        Route::get('/create', [PaymentsController::class, 'create'])->name('create');
+        Route::post('/store', [PaymentsController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [PaymentsController::class, 'edit'])->name('edit');
+        Route::put('/update', [PaymentsController::class, 'update'])->name('update');
+        Route::delete('/delete', [PaymentsController::class, 'delete'])->name('delete');
+    });
 
     Route::group(['prefix' => 'examstudent', 'as' => 'examstudent.'], function () {
-
         Route::get('', [ExamStudentsController::class, 'index'])->name('index');
         Route::get('/create', [ExamStudentsController::class, 'create'])->name('create');
         Route::post('/store', [ExamStudentsController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [ExamStudentsController::class, 'edit'])->name('edit');
         Route::put('/update', [ExamStudentsController::class, 'update'])->name('update');
-        Route::delete('/destroy', [ExamStudentsController::class, 'destroy'])->name('destroy');
+        Route::delete('/delete', [ExamStudentsController::class, 'delete'])->name('delete');
     });
 
 
@@ -86,13 +86,15 @@ Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
         Route::delete('/delete', [GroupController::class, 'delete'])->name('delete');
     });
 
-    Route::get('/lesson', [LessonController::class, 'index'])->name('Lesson.index');
-    Route::get('/lesson/create', [LessonController::class, 'create'])->name('Lesson.create');
-    Route::post('/lesson/store', [LessonController::class, 'store'])->name('Lesson.store');
-    Route::get('/lesson/edit/{id}', [LessonController::class, 'edit'])->name('Lesson.edit');
-    Route::put('/lesson/update', [LessonController::class, 'update'])->name('Lesson.update');
-    Route::delete('/lesson/delete', [LessonController::class, 'delete'])->name('Lesson.delete');
 
+    Route::group(['prefix' => 'lesson', 'as' => 'lesson.'], function () {
+        Route::get('', [LessonController::class, 'index'])->name('index');
+        Route::get('create', [LessonController::class, 'create'])->name('create');
+        Route::post('store', [LessonController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [LessonController::class, 'edit'])->name('edit');
+        Route::put('update', [LessonController::class, 'update'])->name('update');
+        Route::delete('delete', [LessonController::class, 'delete'])->name('delete');
+    });
 
     Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
         Route::get('', [StudentController::class, 'index'])->name('index');
@@ -111,5 +113,4 @@ Route::group(['prefix'=>'admin','as' => 'admin.'],function(){
         Route::put('update', [UserController::class, 'update'])->name('update');
         Route::delete('delete', [UserController::class, 'delete'])->name('delete');
     });
-
 });

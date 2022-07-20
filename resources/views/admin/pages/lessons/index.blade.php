@@ -9,9 +9,9 @@
 
         <div class="col-md-12">
             <div class="card">
-                <a href="{{ route('admin.teacher.create') }}" class="btn btn-primary">إضافه معلم</a>
                 <div class="card-header">
-                    <strong class="card-title">بيانات المعلمين</strong>
+                    <strong class="card-title">بيانات دروس الطلاب</strong>
+                    <a href="{{ route('admin.lesson.create') }}" class="btn btn-primary float-right">إضافه </a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -30,15 +30,19 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
-                                                Name</th>
+                                                day</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 332px;"
                                                 aria-label="Position: activate to sort column ascending">
-                                                Birthday</th>
+                                                from</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 148px;"
                                                 aria-label="Office: activate to sort column ascending">
-                                                phone</th>
+                                                to</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                class_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
@@ -52,27 +56,26 @@
                                                 aria-label="Salary: activate to sort column ascending">
                                                 Delete</th>
                                         </tr>
+                                        </tr>
                                     </thead>
                                     <tbody>
-
-
-                                        @foreach ($teachers as $index => $teacher)
+                                        @foreach ($lessons as $index => $lesson)
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $teacher->name }}</td>
-                                                <td>{{ $teacher->birthday }}</td>
-                                                <td>{{ $teacher->phone }}</td>
-                                                <td>{{ $teacher->note }}</td>
-
+                                                <td>{{ $lesson->day }}</td>
+                                                <td>{{ $lesson->from }}</td>
+                                                <td>{{ $lesson->to }}</td>
+                                                <td>{{ $lesson->group->name }}</td>
+                                                <td>{{ $lesson->note }}</td>
                                                 <td>
-                                                    <x-action.edit :route="route('admin.teacher.edit', $teacher->id)" />
+                                                    <x-action.edit :route="route('admin.lesson.edit',$lesson->id)" />
+                                                        
                                                 </td>
                                                 <td>
-                                                    <x-action.delete :value="$teacher->id" :route="route('admin.teacher.delete')" />
+                                                    <x-action.delete :value="$lesson->id" :route="route('admin.lesson.delete')" />
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>

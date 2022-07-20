@@ -36,6 +36,18 @@
                                                 <i class="fa fa-puzzle-piece"></i>
                                                 <a href="{{route('admin.attend.index')}}">الحضور</a>
                                           </li>
+                                          <li>
+                                                <i class="fa fa-puzzle-piece"></i>
+                                                <a href="{{route('admin.Payment.index')}}">المدفوعات</a>
+                                          </li>
+                                          <li>
+                                                <i class="fa fa-puzzle-piece"></i>
+                                                <a href="{{route('admin.examstudent.index')}}">إختبارات الطلاب</a>
+                                          </li>
+                                          <li>
+                                                <i class="fa fa-puzzle-piece"></i>
+                                                <a href="{{route('admin.lesson.index')}}"> الدروس</a>
+                                          </li>
                                     </ul>
                               </li>
                         </ul>
