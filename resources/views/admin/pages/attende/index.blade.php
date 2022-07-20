@@ -10,8 +10,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('attend.create') }}" class="btn btn-primary">Create</a>
+                    <strong class="card-title">الحضور</strong>
+                    <a href="{{ route('admin.attend.create') }}" class="btn btn-primary float-right">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -23,12 +23,12 @@
                                     aria-describedby="bootstrap-data-table_info">
                                     <thead>
                                         <tr role="row">
-                                            
+
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
                                                 #</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
+                                            <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
                                                 student_id</th>
@@ -43,24 +43,46 @@
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
-                                                attend	</th>
+                                                attend </th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
                                                 note</th>
-                                          
-                        
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Edit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Delete</th>
+
+
                                     </thead>
                                     <tbody>
                                         @foreach ($attends as $index => $attend)
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $attend->student_id }}</td>
-                                                <td>{{ $attend->lesson_id }}</td>
-                                                <td>{{ $attend->date }}</td>
-                                                <td>{{ $attend->attend }}</td>
+                                                <td>{{ $attend->student->name }}</td>
+                                                <td>{{ $attend->lesson->name }}</td>
+                                                <td>{{ $attend->date }} </td>
+
+                                                @if ($attend->attend == 1)
+                                                    <td> <span class="text-primary">attend</span> </td>
+                                                @else
+                                                    <td> <span class="text-danger">absent</span> </td>
+                                                @endif
+
+
+
                                                 <td>{{ $attend->note }}</td>
-                                         
+                                                <td>
+                                                    <x-action.edit :route="route('admin.attend.edit', $attend->id)" />
+                                                </td>
+                                                <td>
+                                                    <x-action.delete :value="$attend->id" :route="route('admin.attend.delete')" />
+                                                </td>
+
                                             </tr>
                                         @endforeach
 

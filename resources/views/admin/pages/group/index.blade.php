@@ -10,8 +10,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('admin.group.create') }}" class="btn btn-primary">Create</a>
+                    <strong class="card-title">المجوعات</strong>
+                    <a href="{{ route('admin.group.create') }}" class="btn btn-primary float-right">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -58,7 +58,7 @@
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
                                                 <td>{{ $group->name }}</td>
-                                                <td>{{ $group->group->name }}</td>
+                                                <td>{{ $group->teacher->name }}</td>
                                                 <td>{{ $group->type }}</td>
                                                 <td>{{ $group->note }}</td>
                                                 <td>

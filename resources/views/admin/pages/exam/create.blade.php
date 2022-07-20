@@ -10,7 +10,7 @@
                 <div class="card-header bg-primary text-light" style="text-align: right">
                     الاختبار </div>
                 <div class="card-body card-block">
-                    <form action="{{ route('exam.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('admin.exam.store') }}" method="post" class="form-horizontal">
                         @csrf
 
 

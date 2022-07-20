@@ -45,7 +45,7 @@ class ExamController extends Controller
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
 
-        return redirect(route('exam.index'));
+        return redirect(route('admin.exam.index'));
     }
 
     public function edit()

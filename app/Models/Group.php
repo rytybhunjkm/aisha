@@ -11,7 +11,7 @@ class Group extends Model
 
     protected $fillable = ['teacher_id', 'type', 'note', 'name'];
 
-    public function group()
+    public function teacher()
     {
 
         return $this->belongsTo(Teacher::class, 'teacher_id');

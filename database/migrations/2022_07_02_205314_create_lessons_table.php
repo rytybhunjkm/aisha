@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->enum('day',['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'])->nullable();
+            $table->string('name');
+            $table->enum('day', ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'])->nullable();
             $table->time('from');
             $table->time('to');
             $table->unsignedBigInteger('group_id');
