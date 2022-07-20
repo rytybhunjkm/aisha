@@ -9,9 +9,9 @@
 
         <div class="col-md-12">
             <div class="card">
-                <a href="{{ route('admin.teacher.create') }}" class="btn btn-primary">إضافه معلم</a>
+                <a href="{{ route('admin.Payment.create') }}" class="btn btn-primary">إضافه دفع</a>
                 <div class="card-header">
-                    <strong class="card-title">بيانات المعلمين</strong>
+                    <strong class="card-title">بيانات المدفوعات</strong>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -23,6 +23,7 @@
                                     aria-describedby="bootstrap-data-table_info">
                                     <thead>
                                         <tr role="row">
+
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
@@ -30,19 +31,21 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 205px;" aria-sort="ascending"
                                                 aria-label="Name: activate to sort column descending">
-                                                Name</th>
+                                                student_id</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 332px;"
                                                 aria-label="Position: activate to sort column ascending">
-                                                Birthday</th>
+                                                payed</th>
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 332px;"
+                                                aria-label="Position: activate to sort column ascending">
+                                                month</th>
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1" style="width: 148px;"
                                                 aria-label="Office: activate to sort column ascending">
-                                                phone</th>
-                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
-                                                rowspan="1" colspan="1" style="width: 122px;"
-                                                aria-label="Salary: activate to sort column ascending">
-                                                note</th>
+                                                onte</th>
+
                                             <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
                                                 rowspan="1" colspan="1"
                                                 aria-label="Salary: activate to sort column ascending">
@@ -52,23 +55,24 @@
                                                 aria-label="Salary: activate to sort column ascending">
                                                 Delete</th>
                                         </tr>
+
+
+
                                     </thead>
                                     <tbody>
-
-
-                                        @foreach ($teachers as $index => $teacher)
+                                        @foreach ($payments as $index => $Payment)
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
-                                                <td>{{ $teacher->name }}</td>
-                                                <td>{{ $teacher->birthday }}</td>
-                                                <td>{{ $teacher->phone }}</td>
-                                                <td>{{ $teacher->note }}</td>
+                                                <td>{{ $Payment->student->name }}</td>
 
+                                                <td>{{ $Payment->payed }}</td>
+                                                <td>{{ $Payment->month }}</td>
+                                                <td>{{ $Payment->onte }}</td>
                                                 <td>
-                                                    <x-action.edit :route="route('admin.teacher.edit', $teacher->id)" />
+                                                    <x-action.edit :route="route('admin.Payment.edit', $Payment->id)" />
                                                 </td>
                                                 <td>
-                                                    <x-action.delete :value="$teacher->id" :route="route('admin.teacher.delete')" />
+                                                    <x-action.delete :value="$Payment->id" :route="route('admin.Payment.delete')" />
                                                 </td>
                                             </tr>
                                         @endforeach
