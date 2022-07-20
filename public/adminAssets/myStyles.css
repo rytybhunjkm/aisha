@@ -2,3 +2,6 @@
     background-color: #3066BE;
     color: white;
 }
+.subtitle{
+    display: none !important;
+}

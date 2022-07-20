@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExamStudent\ExamStudentDeleteRequest;
+use App\Http\Requests\ExamStudent\ExamStudentStoreRequest;
+use App\Http\Requests\ExamStudent\ExamStudentUpdateRequest;
 use App\Models\Exam;
 use App\Models\ExamStudent;
 use App\Models\Student;
-use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ExamStudentsController extends Controller
@@ -30,16 +32,8 @@ class ExamStudentsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ExamStudentStoreRequest $request)
     {
-        $request->validate([
-            'exam_id' => 'required|exists:exams,id',
-            'student_id' => 'required|exists:students,id',
-            'memorized' => 'required',
-            'degree' => 'nullable|numeric',
-            'date' => 'required|date',
-            'note' => 'nullable'
-        ]);
         ExamStudent::create([
             'exam_id' => $request->exam_id,
             'student_id' => $request->student_id,
@@ -53,33 +47,21 @@ class ExamStudentsController extends Controller
         return redirect(route('admin.examstudent.index'));
     }
 
-    public function edit($id)
+    public function edit(ExamStudent $examStudent)
     {
         $exams = Exam::get();
         $students = Student::get();
-        $examstudents = ExamStudent::find($id);
 
         return view('admin.pages.examstudent.edit', [
             'exams' => $exams,
             'students' => $students,
-            'examstudents' => $examstudents
+            'examstudents' => $examStudent
         ]);
     }
 
-    public function update(Request $request)
+    public function update(ExamStudentUpdateRequest $request, ExamStudent $examStudent)
     {
-        $request->validate([
-
-            'exam_id' => 'required|exists:exams,id',
-            'student_id' => 'required|exists:students,id',
-            'memorized' => 'required',
-            'degree' => 'required',
-            'date' => 'required|date',
-            'note' => 'nullable'
-        ]);
-
-        $examstudents = ExamStudent::find($request->examstudent_id);
-        $examstudents->update([
+        $examStudent->update([
             'exam_id' => $request->exam_id,
             'student_id' => $request->student_id,
             'memorized' => $request->memorized,
@@ -92,15 +74,9 @@ class ExamStudentsController extends Controller
         return redirect(route('admin.examstudent.index'));
     }
 
-    public function delete(Request $request)
+    public function delete(ExamStudentDeleteRequest $request,ExamStudent $examstudent)
     {
-        $request->validate([
-            'id' => 'required|exists:exam_students,id'
-        ]);
-
-        $examstudents = ExamStudent::find($request->id);
-        $examstudents->delete();
-
+        $examstudent->delete();
         Alert::success('نجاح', 'تمت العملية بنجاح');
         return redirect()->back();
     }

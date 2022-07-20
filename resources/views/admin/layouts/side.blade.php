@@ -8,13 +8,21 @@
                               </li>
                               <li class="menu-title">UI elements</li><!-- /.menu-title -->
 
-                              <li class="menu-item-has-children dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
-                                     <i class="menu-icon fa fa-cogs"></i>الجداول</a>
-                                    <ul class="sub-menu children dropdown-menu">
+                              @if (request()->route()->getName() == "admin.teacher.index"||
+                                    request()->route()->getName() == "admin.student.index")
+                                    <li class="menu-item-has-children dropdown open show">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"> 
+                                          <i class="menu-icon fa fa-cogs"></i>الجداول</a>
+                                          <ul class="sub-menu children dropdown-menu show">
+                              @else
+                                    <li class="menu-item-has-children dropdown open">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+                                          <i class="menu-icon fa fa-cogs"></i>الجداول</a>
+                                          <ul class="sub-menu children dropdown-menu">
+                              @endif
                                           <li>
                                                 <i class="fa fa-puzzle-piece"></i>
-                                                <a href="{{route('admin.teacher.index')}}">المُعلِّمين</a>
+                                                <a href="{{route('admin.teacher.index')}}" class="{{request()->route()->getName() == "admin.teacher.index" ? "text-primary" : ''}}">المُعلِّمين</a>
                                           </li>
                                           <li>
                                                 <i class="fa fa-puzzle-piece"></i>

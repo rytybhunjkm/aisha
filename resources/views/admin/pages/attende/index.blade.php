@@ -56,8 +56,6 @@
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
                                                 Delete</th>
-
-
                                     </thead>
                                     <tbody>
                                         @foreach ($attends as $index => $attend)
