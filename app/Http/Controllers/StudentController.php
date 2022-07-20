@@ -59,7 +59,7 @@ class StudentController extends Controller
     {
         $groups = Group::get();
         $student = Student::find($id);
-        return view('admin.pages.student.edit',[
+        return view('admin.pages.student.edit', [
             'groups' => $groups,
             'student' => $student
         ]);
@@ -76,6 +76,7 @@ class StudentController extends Controller
             'note' => 'nullable',
             'group_id' => 'required|exists:groups,id'
         ]);
+
 
         $student = Student::find($request->student_id);
 

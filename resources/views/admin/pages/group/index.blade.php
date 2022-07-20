@@ -43,6 +43,14 @@
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
                                                 note</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Edit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,9 +58,15 @@
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">{{ ++$index }}</td>
                                                 <td>{{ $group->name }}</td>
-                                                <td>{{ $group->teacher_id }}</td>
+                                                <td>{{ $group->group->name }}</td>
                                                 <td>{{ $group->type }}</td>
                                                 <td>{{ $group->note }}</td>
+                                                <td>
+                                                    <x-action.edit :route="route('admin.group.edit', $group->id)" />
+                                                </td>
+                                                <td>
+                                                    <x-action.delete :value="$group->id" :route="route('admin.group.delete')" />
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
