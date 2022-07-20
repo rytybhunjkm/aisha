@@ -10,8 +10,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>
-                    <a href="{{ route('admin.exam.create') }}" class="btn btn-primary">Create</a>
+                    <strong class="card-title">الامتحانات</strong>
+                    <a href="{{ route('admin.exam.create') }}" class="btn btn-primary float-right">Create</a>
                 </div>
                 <div class="card-body">
                     <div id="bootstrap-data-table_wrapper"
@@ -47,6 +47,14 @@
                                                 rowspan="1" colspan="1" style="width: 122px;"
                                                 aria-label="Salary: activate to sort column ascending">
                                                 note</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Edit</th>
+                                            <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table"
+                                                rowspan="1" colspan="1" style="width: 122px;"
+                                                aria-label="Salary: activate to sort column ascending">
+                                                Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,6 +66,12 @@
                                                 <td>{{ $exam->max_mark }}</td>
                                                 <td>{{ $exam->min_mark }}</td>
                                                 <td>{{ $exam->note }}</td>
+                                                <td>
+                                                    <x-action.edit :route="route('admin.exam.edit', $exam->id)" />
+                                                </td>
+                                                <td>
+                                                    <x-action.delete :value="$exam->id" :route="route('admin.exam.delete')" />
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
