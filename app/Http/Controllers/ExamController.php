@@ -45,18 +45,53 @@ class ExamController extends Controller
         ]);
         Alert::success('نجاح', 'تمت العملية بنجاح');
 
-        return redirect(route('exam.index'));
+        return redirect(route('admin.exam.index'));
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $exam = Exam::find($id);
+        $teachers = Teacher::get();
+        return view('admin.pages.exam.edit', [
+            'teachers' => $teachers,
+            'exam' => $exam
+        ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $request->validate([
+            'teacher_name' => 'required|exists:teachers,name',
+            'title' => 'required|min:11',
+            'max_mark' => 'required|numeric',
+            'min_mark' => 'required|numeric',
+            'note' => 'nullable'
+        ]);
+
+        $exam = Exam::find($request->exam_id);
+
+
+
+        $exam->update([
+            'teacher' => $request->teacher_name,
+            'title' => $request->title,
+            'max_mark' => $request->max_mark,
+            'min_mark' => $request->min_mark,
+            'note' => $request->note,
+        ]);
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+
+        return redirect(route('admin.exam.index'));
     }
 
-    public function destroy()
+    public function delete(Request $request)
     {
+
+        $exam = Exam::find($request->id);
+
+        $exam->delete();
+        Alert::success('نجاح', 'تمت العملية بنجاح');
+
+        return redirect()->back();
     }
 }
